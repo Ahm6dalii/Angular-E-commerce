@@ -1,0 +1,35 @@
+
+    <div class="d-flex justify-content-between">
+        <div><h2>WishList</h2></div>
+        <div class="d-flex gap-3">
+            <h4 class="d-inline-block">Count:</h4> <span class="d-inline-block fs-5 text-warning">{{wishList.count}}</span>
+        </div>
+        </div>
+    <!-- productList.length==0 -->
+    @if(1>2){
+    <app-loading-screen></app-loading-screen>
+    }@else {
+        @for(item of wishList.data; track $index){
+            <div class="row border-bottom align-items-center">
+                <div class="col-2">
+                    <img [src]="item.imageCover" style="width: 40px; height: 70px;" class="w-100" alt="">
+                </div>
+                <div class="col-7">
+                    <p class="lead">{{item.title}}</p>
+                </div>
+                <div class="flex gap-2 col-3 text-center">
+                    <button class="btn btn-danger" (click)=" removeFromWishList(item.id)">
+                        
+                        remove
+                    </button>
+                    <button class="btn btn-success ms-2" (click)="addProdctToCard(item.id)">
+                        
+                        Add To Card
+                    </button>
+                </div>  
+                
+            </div>
+            }
+        
+          
+    }
