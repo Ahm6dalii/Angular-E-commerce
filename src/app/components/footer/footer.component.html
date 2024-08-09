@@ -1,1 +1,44 @@
-<p>footer works!</p>
+
+<footer class="footer bg-body-secondary text-dark ">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Info -->
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>+1 234 567 890</li>
+                    <li>{{"email@example.com"}}</li>
+                    <li>123 Street, City, Country</li>
+                </ul>
+            </div>
+            <!-- Quick Links -->
+            <div class="footer-col linkk">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a></li>
+                    <li><a [routerLink]="['/product']" routerLinkActive="router-link-active" >Shop</a></li>
+                    <li><a [routerLink]="['/about']" routerLinkActive="router-link-active" >About</a></li>
+                    <li><a [routerLink]="['/contact']" routerLinkActive="router-link-active" >Contact</a></li>
+                </ul>
+            </div>
+            <!-- Social Media -->
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <!-- Newsletter -->
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <form action="#">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>
