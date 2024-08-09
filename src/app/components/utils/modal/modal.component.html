@@ -1,0 +1,17 @@
+<div class="bg-secondary modal fade  bg-opacity-25" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog d-flex align-items-center ">
+      <div class="modal-content bg-light-c ">
+        <div class="d-flex justify-content-end ">
+          <button type="button" class="btn-close m-2" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+            <h2 >You Shoud Login First</h2>
+            <a class="nav-link text-h d-inline-block" [routerLink]="['/register']"  > Create an account</a> or   <a class="nav-link text-h d-inline-block" [routerLink]="['/login']"> log in </a> to see additional search results, add your favorites to Collections, and save changes.
+        </div>
+        <div class="d-flex justify-content-center pb-2">
+          <button type="button" [routerLink]="['/login']" routerLinkActive="router-link-active" data-bs-dismiss="modal"  class="btn btn-outline-primary ">Sign in</button>
+          <button type="button" [routerLink]="['/register']" routerLinkActive="router-link-active" data-bs-dismiss="modal"  class="btn btn-primary ms-3">Sign up</button>
+        </div>
+      </div>
+    </div>
+  </div> 

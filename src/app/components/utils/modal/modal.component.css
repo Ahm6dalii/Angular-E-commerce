@@ -1,0 +1,14 @@
+.bg-light-c{
+    background: #eee !important;
+}
+.modal {
+    --bs-modal-margin: 6.75rem;
+}
+
+.text-h{
+    transition: 200ms all;
+    color:#0D6EFD;
+}
+.text-h:hover{
+    color: #444343;
+}

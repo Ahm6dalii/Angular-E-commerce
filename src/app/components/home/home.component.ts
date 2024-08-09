@@ -6,10 +6,11 @@ import { CatogerySlideComponent } from "../utils/catogery-slide/catogery-slide.c
 import { HttpClient } from '@angular/common/http';
 import { ProductSlideComponent } from "../utils/product-slide/product-slide.component";
 import { ProductsComponent } from "../products/products.component";
+import { BannerComponent } from "../utils/banner/banner.component";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CustomStringPipe, CatogerySlideComponent, ProductSlideComponent, ProductsComponent],
+  imports: [CustomStringPipe, CatogerySlideComponent, ProductSlideComponent, ProductsComponent, BannerComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

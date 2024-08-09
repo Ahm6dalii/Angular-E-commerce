@@ -10,14 +10,14 @@
     <app-loading-screen></app-loading-screen>
     }@else {
         @for(item of wishList.data; track $index){
-            <div class="row border-bottom align-items-center">
-                <div class="col-2">
-                    <img [src]="item.imageCover" style="width: 40px; height: 70px;" class="w-100" alt="">
+            <div class="row border-bottom align-items-center my-1">
+                <div class="col-1">
+                    <img [src]="item.imageCover" style="width: 20px; height: 90px;" class="w-100" alt="">
                 </div>
-                <div class="col-7">
+                <div class="col-6">
                     <p class="lead">{{item.title}}</p>
                 </div>
-                <div class="flex gap-2 col-3 text-center">
+                <div class="flex gap-2 col-3 text-center ms-auto">
                     <button class="btn btn-danger" (click)=" removeFromWishList(item.id)">
                         
                         remove

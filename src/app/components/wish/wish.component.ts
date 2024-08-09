@@ -50,6 +50,7 @@ export class WishComponent implements OnChanges,OnInit {
     this._cardWishService.removerFromWish(id).subscribe({
       next:(res)=>{
         this.isloading=false;
+        this._cardWishService.changeWish(res.data.length)
     console.log(res);
 
 this.getWishList()      }
