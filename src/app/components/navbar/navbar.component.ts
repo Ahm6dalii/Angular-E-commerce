@@ -1,3 +1,4 @@
+
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CardWishService } from '../../service/card-wish.service';
@@ -8,6 +9,7 @@ import { UpperCaseStPipe } from '../../pipes/upper-case-st.pipe';
 @Component({
   selector: 'app-navbar',
   standalone: true,
+
   imports: [RouterLink, RouterLinkActive, ModalComponent,UpperCaseStPipe],
 templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
