@@ -13,6 +13,7 @@ import { ProductSlideComponent } from "../utils/product-slide/product-slide.comp
 import { CatogerySlideComponent } from "../utils/catogery-slide/catogery-slide.component";
 import { ProductsOnlyComponent } from '../products-only/products-only.component';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { CardWishService } from '../../service/card-wish.service';
 
 @Component({
   selector: 'app-products',
@@ -35,10 +36,16 @@ export class ProductsComponent implements OnInit{
   searchValue:string='';
   copyArr:Product[]=[]
   _productService=inject(ProductsService)
+  _cardWishService=inject(CardWishService)
   products:any[]=[] ;
   wrongInputValue:boolean=false;
   metaData:Metadata={} as Metadata
   notFoundedCatogery:boolean=false;
+  constructor(){
+    this.getCard();
+    this.getWish();
+
+  }
 ngOnInit(): void {
   this.getAllProduct();
   this.getCatogeries();
@@ -94,8 +101,10 @@ onInputChange(event: Event,start:number):boolean|void {
   }
   if ((event.target as HTMLInputElement).value=='') {
      inputValue =''
-  }
+     
+  }else{
     inputValue =`price[gte]=${(event.target as HTMLInputElement).value}`;
+  }
   console.log(inputValue,'console.log(inputValue)');
 
   this.getAllProduct(inputValue,start)
@@ -116,5 +125,28 @@ getBranding(){
     }
   })
 }
+
+getCard(){
+  this._cardWishService.gitCard().subscribe({
+    next:(res)=>{
+      console.log(res.numOfCartItems);     
+      this._cardWishService.changeCard(res.numOfCartItems)
+    },
+    error(err){
+      console.log(err);
+      
+    }
+  })
+
+}
+getWish(){
+  this._cardWishService.gitWish().subscribe({
+    next:(res)=>{
+      console.log(res.count,"res.numOfWishItems");       
+      this._cardWishService.changeWish(res.count)
+    }
+  })
+  }
+
 }
 

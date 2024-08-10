@@ -1,15 +1,19 @@
-
+<p-toast
+[showTransformOptions]="'translateY(100%)'" 
+    [showTransitionOptions]="'100ms'" 
+    [hideTransitionOptions]="'100ms'" 
+    [showTransformOptions]="'translateX(100%)'" />
     <div class="d-flex justify-content-between">
         <div><h2>WishList</h2></div>
         <div class="d-flex gap-3">
-            <h4 class="d-inline-block">Count:</h4> <span class="d-inline-block fs-5 text-warning">{{wishList.count}}</span>
+            <h4 class="d-inline-block">Count:</h4> <span class="d-inline-block fs-5 text-warning">{{wishList?.count}}</span>
         </div>
         </div>
     <!-- productList.length==0 -->
     @if(1>2){
     <app-loading-screen></app-loading-screen>
     }@else {
-        @for(item of wishList.data; track $index){
+        @for(item of wishList?.data; track $index){
             <div class="row border-bottom align-items-center my-1">
                 <div class="col-1">
                     <img [src]="item.imageCover" style="width: 20px; height: 90px;" class="w-100" alt="">
@@ -29,6 +33,10 @@
                 </div>  
                 
             </div>
+            }
+            @empty {
+                <div class="text-danger text-center py-2 my-2">Wish is empty</div>
+
             }
         
           

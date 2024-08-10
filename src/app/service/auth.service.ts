@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, inject, Injectable, PLATFORM_ID } from '@angular/core';
 // import { platform } from 'os';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { jwtDecode } from "jwt-decode";
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class AuthService {
   isBrowser: boolean = false;
   loggedInUser: BehaviorSubject<string> = new BehaviorSubject('');
-
+  decode:BehaviorSubject<object>= new BehaviorSubject({})
+  decode$=this.decode.asObservable();
   constructor(@Inject(PLATFORM_ID) platformid: object) {
     this.isBrowser = isPlatformBrowser(platformid);
     if (this.isBrowser) {
@@ -19,6 +21,7 @@ export class AuthService {
         this.loggedInUser.next(localStorage.getItem('token'));
       }
     }
+
   }
 
   httpClient = inject(HttpClient);

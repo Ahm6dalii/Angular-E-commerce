@@ -1,5 +1,10 @@
+<p-toast
+[showTransformOptions]="'translateY(100%)'" 
+    [showTransitionOptions]="'100ms'" 
+    [hideTransitionOptions]="'100ms'" 
+    [showTransformOptions]="'translateX(100%)'" />
   @if(!isLogedIn){
-    <div class="card flex justify-content-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <div class="card flex justify-content-center " data-bs-toggle="modal" data-bs-target="#exampleModal">
       <div  class=" card d-flex flex-column align-items-center justify-content-center product-item  rounded border ">
         <div class="product"> <img [src]="item.imageCover" [alt]="item.title|customString">
             <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
@@ -7,9 +12,11 @@
                 <li class="icon mx-3"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-heart"></i></li>
                 <li class="icon"   data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping"></i></li>
             </ul>
-        </div>
-        <div class="title pt-4 pb-1 small">{{item.category.name}}</div>
+          </div>
+          <div class="title pt-1 pb-1 small text-danger">{{item.brand.name}}</div>
+        <div class="title pt-1 pb-1 small fw-medium">{{item.category.name}}</div>
       <div class="title pt-1 pb-2">{{item.title|customString}}</div>
+
         <!-- <div class="d-flex align-content-center justify-content-center"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> </div> -->
         <div class="d-flex align-items-center justify-content-center gx-2"> <span>{{item.ratingsAverage}}</span><i class="fa fa-star text-warning fa-2xl"></i></div>
         <div class="price">{{item.price}}<span class="text-success"> EGP</span></div>
@@ -17,17 +24,19 @@
   </div>
   <app-modal></app-modal>
   }@else {
-    <div  class=" card d-flex flex-column align-items-center justify-content-center product-item  rounded border ">
+    <div  class=" card d-flex flex-column align-items-center justify-content-center product-item  rounded border">
       <div class="product"> <img [src]="item.imageCover" [routerLink]="['/product',item._id]" [alt]="item.title|customString">
+
           <ul class="d-flex align-items-center justify-content-center list-unstyled icons">
               <li class="icon"  [routerLink]="['/product',item._id]"><i class="fa-solid fa-circle-info"></i></li>
               <li class="icon mx-3" (click)="addProdctToWish(item._id)"><i class="fa-solid fa-heart"></i></li>
               <li class="icon"  (click)="addProdctToCard(item._id)"><i class="fa-solid fa-cart-shopping"></i></li>
           </ul>
       </div>
+      <div class="title pt-4 pb-1 small text-danger">{{item.brand.name}}</div>
       <div class="title pt-4 pb-1 small">{{item.category.name}}</div>
     <div class="title pt-1 pb-2">{{item.title|customString}}</div>
-       <div class="d-flex align-content-center justify-content-center"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> </div> 
+       <!-- <div class="d-flex align-content-center justify-content-center"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> </div>  -->
       <div class="d-flex align-items-center justify-content-center gx-2"> <span>{{item.ratingsAverage}}</span><i class="fa fa-star text-warning fa-2xl"></i></div>
       <div class="price">{{item.price}}<span class="text-success"> EGP</span></div>
   </div>

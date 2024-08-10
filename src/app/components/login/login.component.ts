@@ -7,12 +7,14 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
+import { AuthTokenService } from '../../service/auth-token.service';
+import { jwtDecode } from "jwt-decode";
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './login.component.html',
+templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
@@ -27,7 +29,7 @@ export class LoginComponent {
     ]),
   });
 
-  constructor(private _authService: AuthService) {}
+  constructor(private _authService: AuthService ,private _authTokenService:AuthTokenService) {}
 
   login() {
     if (this.loginForm.valid == false) {
@@ -38,9 +40,10 @@ export class LoginComponent {
       console.log('Form Data:', this.loginForm.value); // طباعة بيانات النموذج
       this._authService.signin(this.loginForm.value).subscribe({
         next: (res) => {
-          console.log(res);
-          this.loginForm.reset();
+          console.log(res,'dddddddddddddddddddddddddddddddddd');
           this._authService.saveUserData(res.token);
+          this._authTokenService.changeToken(res.token)
+          this.loginForm.reset();
 
           this.router.navigate(['/home']);
         },

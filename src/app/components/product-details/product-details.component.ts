@@ -3,17 +3,20 @@ import { Product } from '../../interfaces/product';
 import { ProductsService } from '../../service/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CardWishService } from './../../service/card-wish.service';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [],
+  imports: [ToastModule],
 templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.css'
+  styleUrl: './product-details.component.css',
+  providers: [MessageService]
 })
 export class ProductDetailsComponent {
   product!:Product
-  constructor( private route:ActivatedRoute,private _ProductService:ProductsService
+  constructor(private messageService:MessageService, private route:ActivatedRoute,private _ProductService:ProductsService
     ,private router:Router,private _cardWishServicet:CardWishService
   ){
 
@@ -37,6 +40,11 @@ export class ProductDetailsComponent {
         next:(res)=>{
           console.log(res);
           this._cardWishServicet.changeCard(res.numOfCartItems)
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Product Added',
+            detail: 'Product has been added to your card.'
+          });
           // this.card=res;
         }
       })
@@ -47,6 +55,11 @@ export class ProductDetailsComponent {
           console.log(res);
           this._cardWishServicet.changeWish(res.data.length)
           // this.card=res;
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Product Added',
+            detail: 'Product has been added to your wish.'
+          });
           
         }
       })

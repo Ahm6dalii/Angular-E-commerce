@@ -25,11 +25,7 @@
           </li>     
           <li class="nav-item">
             <a class="nav-link" routerLink="/setting" routerLinkActive="active">Setting</a>
-          </li>   
-          <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="/login"  routerLinkActive="active">logout</a>
-          </li>   
-        -->
+          </li>  
           
          
         @if(!isLogedIn){
@@ -39,17 +35,6 @@
             <li class="nav-item">
               <a class="nav-link" routerLink="/register" routerLinkActive="active">register</a>
             </li>  
-            <!-- <li class="nav-item position-relative"  data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <a class="nav-link" routerLinkActive="active"><i class="fa fa-shopping-basket ">
-                <span class="position-absolute top-0 end-0 translate-middle fs-6">{{cardNum}}</span>
-              </i></a>
-            </li>            
-            <li class="nav-item position-relative"  data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <a class="nav-link"  routerLinkActive="active"><i class="fa-solid fa-heart">
-                <span class="position-absolute top-0 end-0 translate-middle fs-6">{{wishNum}}</span>
-              </i></a>
-            </li>    -->
-            <!-- <app-modal></app-modal>          -->
           } @else {
             <li class="nav-item">
               <a class="nav-link  " ><i class="fa-regular fa-user"></i> <span class="fw-semibold text-info"> Welcome </span><span class="fw-bold  ">{{currentUser?.name|upperCaseSt}}</span></a>
@@ -75,5 +60,4 @@
       </div>
 
     </div>
-  </div>
 </nav>

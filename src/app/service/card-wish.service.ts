@@ -1,15 +1,18 @@
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Inject, Injectable, PLATFORM_ID, OnInit } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID, OnInit, inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { AuthTokenService } from './auth-token.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CardWishService {
 
-  token:any= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YjNjOTRlZWQwZGMwMDE2YzEwZjBjZiIsIm5hbWUiOiJBaG1lZCBBYmQgQWwtTXV0aSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzIzMDk5OTE0LCJleHAiOjE3MzA4NzU5MTR9.7MeEsxNXseN0OYYnwwmA3-bLy9UYl4M2fP8sS6bGLbY";
-  isBrowser:boolean=false
+  // token:any= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YjNjOTRlZWQwZGMwMDE2YzEwZjBjZiIsIm5hbWUiOiJBaG1lZCBBYmQgQWwtTXV0aSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzIzMDk5OTE0LCJleHAiOjE3MzA4NzU5MTR9.7MeEsxNXseN0OYYnwwmA3-bLy9UYl4M2fP8sS6bGLbY";
+  token:any= '';
+  isBrowser:boolean=false;
+  _authTokenService=inject(AuthTokenService);
   private dataCard = new BehaviorSubject<number>(0);
   private dataWish = new BehaviorSubject<number>(0);
   private AllDataCard = new BehaviorSubject<any>(0);
@@ -18,33 +21,44 @@ export class CardWishService {
     AllDataCard$= this.dataWish.asObservable();
 
     constructor(@Inject(PLATFORM_ID) platfromId:object,private _httpClient:HttpClient)  { 
-          // this.isBrowser=isPlatformBrowser(platfromId)
-    // if(this.isBrowser){
-    //   if(localStorage.getItem('token')){
-    //     this.token=JSON.parse(localStorage.getItem('token')||'')
-    // }
-    // }
-      console.log("assdsfaasssdas");
-      this.gitCard().subscribe({
-        next:(res)=>{
-          console.log(res.numOfCartItems);     
-          this.changeCard(res.numOfCartItems)
-        }
-      })
-      this.gitWish().subscribe({
-        next:(res)=>{
-          console.log(res.count,"res.numOfWishItems");       
-          this.changeWish(res.count)
-        }
-      })
+      this.isBrowser=isPlatformBrowser(platfromId)
+    if(this.isBrowser){
+      if(localStorage.getItem('token')){
+        this.token=JSON.parse(localStorage.getItem('token')||'')
+    }
+    }
+    //   console.log("assdsfaasssdas");
+    this._authTokenService.myToken$.subscribe({
+      next:(res)=>{
+        this.token=res;
+        console.log(res,'rrresfdfsdfsdfdsfdfsdfdsfsd');
+        
+      }
+    })
+    if(this.token){
+      // this.gitCard().subscribe({
+      //   next:(res)=>{
+      //     console.log(res.numOfCartItems);     
+      //     this.changeCard(res.numOfCartItems)
+      //   }
+      // })
+      // this.gitWish().subscribe({
+      //   next:(res)=>{
+      //     console.log(res.count,"res.numOfWishItems");       
+      //     this.changeWish(res.count)
+      //   }
+    //   }
+    // )
+    }
+     
 
 
   }
  
   
   
-  changeCard(data:number) {
-    this.dataCard.next(data);
+  changeCard(data:number) { 
+      this.dataCard.next(data);
   }
   changeWish(data:number) {
     this.dataWish.next(data);

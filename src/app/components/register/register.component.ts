@@ -7,15 +7,17 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
+import { LoadingScreenComponent } from "../loading-screen/loading-screen.component";
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, LoadingScreenComponent],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'], // تم التعديل هنا
 })
 export class RegisterComponent {
+  msgErr:string=''
   router = inject(Router);
   errorMessege = '';
   islodaing: boolean = false;

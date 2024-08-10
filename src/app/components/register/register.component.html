@@ -6,9 +6,10 @@
       <p>Creat New Account</p>
     </div>
     @if(islodaing){
-    <div class="spinner mx-auto mt-5"></div>
-    }@else{
-    <form class="row mt-3" (ngSubmit)="register()" [formGroup]="registerForm">
+<app-loading-screen></app-loading-screen> 
+   }@else{
+    <h2 class="text-center text-danger">{{errorMessege}} </h2>
+    <form class="row my-3 w-75 m-auto" (ngSubmit)="register()" [formGroup]="registerForm">
       <div class="mb-3 col-lg-6 col-md-12">
         <label for="userName" class="form-label">User Name</label>
         <input
@@ -33,7 +34,6 @@
         </div>
         }
       </div>
-
       <div class="mb-3 col-lg-6 col-md-12">
         <label for="email" class="form-label">Email address</label>
         <input
@@ -120,14 +120,14 @@
         }
       </div>
 
-      @if(errorhttps://github.com/Ahm6dalii/Angular-E-commerce/pull/2/conflict?name=src%252Fapp%252Fservice%252Fproducts.service.ts&base_oid=40062d21b59ba66794cda9e4a7fcd42afbcfc5d3&head_oid=53d799eb19c405e541bb9f95ce97829382358df6Messege){
+      <!-- @if(errorhttps://github.com/Ahm6dalii/Angular-E-commerce/pull/2/conflict?name=src%252Fapp%252Fservice%252Fproducts.service.ts&base_oid=40062d21b59ba66794cda9e4a7fcd42afbcfc5d3&head_oid=53d799eb19c405e541bb9f95ce97829382358df6Messege){
       <p class="bg-danger p-4">{{ errorMessege }}</p>
-      }
+      } -->
 
       <button
         [disabled]="islodaing"
         type="submit"
-        class="btn btn-primary d-block mx-auto mt-3"
+        class="btn btn-outline-primary d-block mx-auto mt-3"
       >
         Sign up
       </button>

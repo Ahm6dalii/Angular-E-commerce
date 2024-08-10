@@ -47,6 +47,7 @@ getCardNumber(){
   this._cardWishService.numOfCartItems.subscribe({
     next:(res)=>{
 this.cardNum=res
+this.haveSignIN()
     }
   })
 
