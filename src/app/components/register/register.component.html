@@ -1,1 +1,136 @@
-<p>register works!</p>
+<div class="regestrationPage h-50">
+  <div class="container">
+    <div class="title text-center text-info">
+      <h1>Registrate Now</h1>
+      <p>Creat New Account</p>
+    </div>
+    @if(islodaing){
+    <div class="spinner mx-auto mt-5"></div>
+    }@else{
+    <form class="row mt-3" (ngSubmit)="register()" [formGroup]="registerForm">
+      <div class="mb-3 col-lg-6 col-md-12">
+        <label for="userName" class="form-label">User Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="userName"
+          formControlName="name"
+        />
+        @if(registerForm.get("name")?.errors &&
+        registerForm.get("name")?.touched) {
+        <div class="alert m-0 p-2 mt-1 alert-danger errors">
+          @if(registerForm.get("name")?.errors["required"]) {
+
+          <p class="">Required</p>
+          } @else if(registerForm.get("name")?.errors["minlength"]){
+          <p>minlength 3 char</p>
+
+          }@else if(registerForm.get("name")?.errors["maxlength"]){
+          <p>minlength 40 char</p>
+
+          }
+        </div>
+        }
+      </div>
+
+      <div class="mb-3 col-lg-6 col-md-12">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          formControlName="email"
+        />
+        @if(registerForm.get("email")?.errors &&
+        registerForm.get("email")?.touched) {
+        <div class="alert m-0 p-2 mt-1 alert-danger errors">
+          @if(registerForm.get("email")?.errors["required"]) {
+
+          <p class="">Required</p>
+          } @else if(registerForm.get("email")?.errors["email"]){
+          <p>invalis email</p>
+
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-3 col-lg-6 col-md-12">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          formControlName="password"
+        />
+
+        @if(registerForm.get("password")?.errors &&
+        registerForm.get("password")?.touched) {
+        <div class="alert m-0 p-2 mt-1 alert-danger errors">
+          @if(registerForm.get("password")?.errors["required"]) {
+
+          <p class="">Required</p>
+          } @else if(registerForm.get("password")?.errors["pattern"]){
+          <p>invalis pattern</p>
+
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-3 col-lg-6 col-md-12">
+        <label for="rePassword" class="form-label">RePassword</label>
+        <input
+          type="password"
+          class="form-control"
+          id="rePassword"
+          formControlName="rePassword"
+        />
+        @if(registerForm.get("rePassword")?.errors &&
+        registerForm.get("rePassword")?.touched) {
+        <div class="alert m-0 p-2 mt-1 alert-danger errors">
+          @if(registerForm.get("rePassword")?.errors["required"]) {
+
+          <p class="">Required</p>
+          } @else if(registerForm.get("rePassword")?.errors["pattern"]){
+          <p>invalis pattern</p>
+
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-3 col-lg-12 col-md-12">
+        <label for="phone" class="form-label">Phone</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="phone"
+          formControlName="phone"
+        />
+        @if(registerForm.get("phone")?.errors &&
+        registerForm.get("phone")?.touched) {
+        <div class="alert m-0phone p-2 mt-1 alert-danger errors">
+          @if(registerForm.get("phone")?.errors["required"]) {
+
+          <p class="">Required</p>
+          } @else if(registerForm.get("phone")?.errors["pattern"]){
+          <p>invalis pattern</p>
+
+          }
+        </div>
+        }
+      </div>
+
+      @if(errorMessege){
+      <p class="bg-danger p-4">{{ errorMessege }}</p>
+      }
+
+      <button
+        [disabled]="islodaing"
+        type="submit"
+        class="btn btn-primary d-block mx-auto mt-3"
+      >
+        Sign up
+      </button>
+    </form>
+    }
+  </div>
+</div>
