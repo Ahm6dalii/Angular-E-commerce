@@ -1,1 +1,72 @@
-<p>login works!</p>
+<div class="regestrationPage h-50">
+  <div class="container">
+    <div class="title text-center text-info">
+      <h1>Sign In Now</h1>
+      <p>login to your Account</p>
+    </div>
+    @if(islodaing){
+    <div class="spinner mx-auto mt-5"></div>
+    }@else{
+    <form
+      class="row mt-3 d-flex flex-column"
+      (ngSubmit)="login()"
+      [formGroup]="loginForm"
+    >
+      <div class="mb-3 col-12 w-auto mx-auto">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          formControlName="email"
+        />
+        @if(loginForm.get("email")?.errors && loginForm.get("email")?.touched) {
+        <div class="alert m-0 p-2 mt-1 alert-danger errors">
+          @if(loginForm.get("email")?.errors["required"]) {
+
+          <p class="">Required</p>
+          } @else if(loginForm.get("email")?.errors["email"]){
+          <p>invalis email</p>
+
+          }
+        </div>
+        }
+      </div>
+      <div class="mb-3 w-auto mx-auto">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          formControlName="password"
+        />
+
+        @if(loginForm.get("password")?.errors &&
+        loginForm.get("password")?.touched) {
+        <div class="alert m-0 p-2 mt-1 alert-danger errors">
+          @if(loginForm.get("password")?.errors["required"]) {
+
+          <p class="">Required</p>
+          } @else if(loginForm.get("password")?.errors["pattern"]){
+          <p>invalis pattern</p>
+
+          }
+        </div>
+        }
+      </div>
+
+      @if(errorMessege){
+      <p class="bg-danger p-4">{{ errorMessege }}</p>
+      }
+
+      <button
+        [disabled]="islodaing"
+        type="submit"
+        class="btn btn-primary d-block mx-auto mt-3"
+      >
+        Log In
+      </button>
+    </form>
+    }
+  </div>
+</div>
