@@ -2,3 +2,9 @@
     font-weight: bold;
     color: rgb(0, 0, 0);
   }
+  .icon-trastion{
+    transition: 300ms;
+  }
+  .icon-trastion:hover{
+    transform: translateX(8px);
+  }

@@ -1,0 +1,25 @@
+<div class="card">
+    <p-carousel 
+       [value]="product" 
+        [numVisible]="3" 
+        [numScroll]="3" 
+        [circular]="false" 
+        [responsiveOptions]="responsiveOptions">
+            <ng-template let-product pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 p-3"
+                >
+                    <div class="mb-3">
+                        <div class="relative  mx-auto text-center">
+                            <img 
+                                [src]="product.image" 
+                                [alt]="product.title" 
+                                class="w-full border-round" />
+                        </div>
+                    </div>
+                    <div class="mb-3 font-medium">
+                        {{ product.name }}
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+</div>

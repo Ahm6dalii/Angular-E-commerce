@@ -1,1 +1,95 @@
-<p>products works!</p>
+<div class="container mt-3">
+  <div class="row">
+    <div class="d-none d-sm-block col-sm-3">
+      <label for="" class="form-label">Search By Name:</label>
+      <input type="text" placeholder="search by name ...." class="form-control mb-2 " [(ngModel)]="searchValue" (input)="searchProduct()">
+      <label for="" class="form-label">Product more than custom price:</label>
+      <input type="number" [ngClass]=" wrongInputValue?'is-invalid':''" placeholder="search by name ...." class="form-control mb-2" (change)="onInputChange($event, metaData.currentPage)" min="0">
+      <label for="" class="form-label">Sort by price:</label>
+      <select name="data" class="mb-2 form-select" id="" (change)="onSelectChange($event,metaData.currentPage)">
+        <option selected hidden disabled>Select</option>
+        <option value="">Default</option>
+        <option value="sort=price ">Sort By Price Aec</option>
+        <option  value="sort=-price ">Sort By Price Des</option>
+      </select> 
+      <label for="" class="form-label">Greater than Price:</label>
+      <select name="data" class="mb-2 form-select" id="" (change)="onSelectChange($event,metaData.currentPage)">
+        <option selected hidden disabled>Select</option>
+        <option value="">Default</option>
+        <option value="price[gte]=1000 ">1000</option>
+        <option  value="price[gte]=5000">5000</option>
+        <option  value="price[gte]=10000">10000</option>
+        <option  value="price[gte]=40000">40000</option>
+      </select> 
+      <label for="" class="form-label">less than Price:</label>
+      <select name="data" class="mb-2 form-select" id="" (change)="onSelectChange($event,metaData.currentPage)">
+        <option selected hidden disabled>Select</option>
+        <option value="">Default</option>
+        <option value="price[lte]=1000 ">100</option>
+        <option  value="price[lte]=1000">1000</option>
+        <option  value="price[lte]=8000">8000</option>
+        <option  value="price[lte]=20000">20000</option>
+        <option  value="price[lte]=40000">40000</option>
+      </select> 
+      <label for="" class="form-label">In Catogery:</label>
+      <select name="data" class="mb-2 form-select" id="" (change)="onSelectChange($event,metaData.currentPage)">
+        <option selected hidden disabled>Select</option>
+        <option value="">Default</option>
+        <option *ngFor="let item of catogeries; let i = index" [value]="'category[in]=' + item._id">
+          {{ item?.name }}
+        </option>
+      </select> 
+      <label for="" class="form-label">In Branding:</label>
+      <select name="data" class="mb-2 form-select" id="" (change)="onSelectChange($event,metaData.currentPage)">
+        <option selected hidden disabled>Select</option>
+        <option value="">Default</option>
+        <option *ngFor="let item of branding; let i = index" [value]="'brand=' + item._id">
+          {{ item?.name }}
+        </option>
+      </select> 
+
+    </div>
+    <div class="col-12 col-sm-9">
+      @if(products.length==0){
+        @if(!searchValue)
+        {
+          <app-loading-screen></app-loading-screen>
+        }@else {
+          <p class="text-center alert alert-warning">No  Product Found</p>
+        }
+      }@else {
+        @if(notFoundedCatogery)
+        {
+          <div class="h-c d-flex d-flex justify-content-center align-items-center w-100">
+            <p class="text-center alert alert-warning w-100">No Product Found </p>
+          </div>
+        }@else {
+          <app-products-only [products]="products"></app-products-only>
+        }
+      }
+      <nav aria-label="Page navigation example" class=" d-flex justify-content-center align-items-center mt-4 ">
+        <ul class="pagination">
+          @if(metaData.prevPage){
+            <li class="page-item">
+              <a class="page-link" (click)="getAllProduct('',metaData?.prevPage)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+          }
+        
+          @for (item of metaData.numberOfPages|rangeLoop; track metaData.numberOfPages; let i = $index) {
+            <li class="page-item"><a [ngClass]="{'bg-secondary text-white': (i + 1) === metaData.currentPage, 'page-link': true}"  (click)="getAllProduct('',i + 1 )">{{ i + 1 }}</a>
+            </li>
+        }
+        @if(metaData.nextPage){
+          <li class="page-item">
+            <a class="page-link" (click)="getAllProduct('',metaData?.nextPage)" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>}
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+</div>

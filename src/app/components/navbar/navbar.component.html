@@ -1,66 +1,79 @@
 <nav class="navbar navbar-expand-lg bg-body-secondary fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#"><h1 class="m-0">E-Commerce</h1></a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        @if(isLogeIn){
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/home"
-            routerLinkActive="active"
-            ariaCurrentWhenActive="page"
-            >Home</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/about" routerLinkActive="active"
-            >About</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/contact" routerLinkActive="active"
-            >Contact</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/product" routerLinkActive="active"
-            >Products</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/setting" routerLinkActive="active"
-            >Setting</a
-          >
-        </li>
-        <!-- <li class="nav-item">
-               <a class="nav-link" routerLink="/login"  routerLinkActive="active">logout</a>
+    <div class="container">
+      <a class="navbar-brand" routerLink="/home" href="#"><h1 class="m-0">
+        <span class="d-flex align-items-center fs-5">
+          <i class="fa-solid fa-cart-shopping me-1"></i>
+          Shop-Cart
+        </span>
+      </h1></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" >Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/about" routerLinkActive="active" >About</a>
+          </li>     
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
+          </li>     
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/product" routerLinkActive="active">Products</a>
+          </li>     
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/setting" routerLinkActive="active">Setting</a>
+          </li>   
+          <!-- <li class="nav-item">
+            <a class="nav-link" routerLink="/login"  routerLinkActive="active">logout</a>
           </li>   
         -->
-        }@else{
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login" routerLinkActive="active"
-            >Login</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/register" routerLinkActive="active"
-            >register</a
-          >
-        </li>
-        }
-      </ul>
+          
+         
+        @if(!isLogedIn){
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+            </li>   
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/register" routerLinkActive="active">register</a>
+            </li>  
+            <!-- <li class="nav-item position-relative"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <a class="nav-link" routerLinkActive="active"><i class="fa fa-shopping-basket ">
+                <span class="position-absolute top-0 end-0 translate-middle fs-6">{{cardNum}}</span>
+              </i></a>
+            </li>            
+            <li class="nav-item position-relative"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <a class="nav-link"  routerLinkActive="active"><i class="fa-solid fa-heart">
+                <span class="position-absolute top-0 end-0 translate-middle fs-6">{{wishNum}}</span>
+              </i></a>
+            </li>    -->
+            <!-- <app-modal></app-modal>          -->
+          } @else {
+            <li class="nav-item">
+              <a class="nav-link  " ><i class="fa-regular fa-user"></i> <span class="fw-semibold text-info"> Welcome </span><span class="fw-bold  ">{{currentUser?.name|upperCaseSt}}</span></a>
+          </li> 
+            <li class="nav-item">
+              <a class="nav-link icon-trastion" routerLink="/login" (click)="logout()"  routerLinkActive="active"><i class="fa-solid fa-right-from-bracket"></i></a>
+            </li> 
+            <li class="nav-item position-relative">
+              <a class="nav-link" routerLink="/card-list" routerLinkActive="active"><i class="fa fa-shopping-basket ">
+                <span class="position-absolute top-0 end-0 translate-middle fs-6">{{cardNum}}</span>
+              </i></a>
+            </li>            
+            <li class="nav-item position-relative">
+              <a class="nav-link" routerLink="/wish-list" routerLinkActive="active"><i class="fa-solid fa-heart">
+                <span class="position-absolute top-0 end-0 translate-middle fs-6">{{wishNum}}</span>
+              </i></a>
+            </li>            
+
+          }         
+           
+        </ul>
+     
+      </div>
+
     </div>
   </div>
 </nav>
