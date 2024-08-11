@@ -1,1 +1,8 @@
-<p>setting works!</p>
+<ul class="list-unstyled d-flex gap-2 ">
+  <li class=""> <a class="nav-link" [routerLink]="['user-info']" routerLinkActive="router-link-active" >User info</a></li>
+  <li class=""> <a class="nav-link" [routerLink]="['user-data']" routerLinkActive="router-link-active" >User Data</a></li>
+  <li class=""> <a class="nav-link" [routerLink]="['password']" routerLinkActive="router-link-active" >Change Password</a></li>
+</ul>
+<div class="container pt-2  ">
+  <router-outlet></router-outlet>
+</div>

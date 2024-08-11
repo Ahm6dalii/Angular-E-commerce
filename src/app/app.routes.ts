@@ -11,14 +11,22 @@ import { WishComponent } from './components/wish/wish.component';
 import { authGuard } from './gaurd/auth.guard';
 import { AboutComponent } from './components/about/about.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { UserDataComponent } from './components/user-data/user-data.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 export const routes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home' ,component: HomeComponent },
     { path: 'product', component: ProductsComponent },
     { path: 'about', component:AboutComponent },
-    { path: 'contact', component:ContactUsComponent },
+    { path: 'contact', component:ContactUsComponent }, 
     { path: 'product/:id',canActivate:[authGuard], component: ProductDetailsComponent },
-    {path: 'setting',canActivate:[authGuard] ,component: SettingComponent},
+    {path: 'setting',canActivate:[authGuard] ,component: SettingComponent, children:[
+        { path: '', redirectTo: 'user-info', pathMatch: 'full' },
+        {path: 'user-info', component:UserInfoComponent},
+        {path: 'user-data', component:UserDataComponent},
+        {path: 'password', component:ChangePasswordComponent},
+    ]},
     {path: 'card-list',canActivate:[authGuard],component: CardsComponent },
     {path: 'wish-list',canActivate:[authGuard],component: WishComponent },
     { path: 'register', component: RegisterComponent },

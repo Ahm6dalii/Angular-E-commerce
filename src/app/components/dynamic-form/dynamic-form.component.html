@@ -1,0 +1,18 @@
+<!-- dynamic-form.component.html -->
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div *ngFor="let field of fields" class="form-group">
+      <label [attr.for]="field.name">{{ field.label }}</label>
+      <div [ngSwitch]="field.type">
+        <input *ngSwitchCase="'text'" [formControlName]="field.name" [id]="field.name" class="form-control" />
+        <input *ngSwitchCase="'number'" type="number" [formControlName]="field.name" [id]="field.name" class="form-control" />
+        <textarea *ngSwitchCase="'textarea'" [formControlName]="field.name" [id]="field.name" class="form-control"></textarea>
+        <select *ngSwitchCase="'select'" [formControlName]="field.name" [id]="field.name" class="form-control">
+          <option *ngFor="let option of field.options" [value]="option">{{ option }}</option>
+        </select>
+        <input *ngSwitchCase="'checkbox'" type="checkbox" [formControlName]="field.name" [id]="field.name" class="form-check-input" />
+        <!-- Add more field types as needed -->
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  

@@ -36,7 +36,6 @@ export class BannerComponent implements OnInit{
   getBranding(){
     this._productsService.getBrannding().subscribe({
       next:(res)=>{
-        // console.log(res.data,'ddddddddddddddddddddd');
        this.products=res.data
        this.paginateProducts();
 

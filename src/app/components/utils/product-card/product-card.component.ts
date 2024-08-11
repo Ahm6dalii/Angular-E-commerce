@@ -45,7 +45,7 @@ console.log(this.isLogedIn,'this.isLogedIn');
 }
 
 haveSignIN(){
-  this. _authTokenService.myToken$.subscribe({
+  this._authTokenService.myToken$.subscribe({
     next:(res)=>{
       this.isLogedIn=res;
     },

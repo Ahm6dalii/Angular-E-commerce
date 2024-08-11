@@ -33,6 +33,10 @@ export class CardsComponent implements OnInit {
     this._cardWishService.gitCard().subscribe({
       next:(res)=>{
         console.log(res);
+        if(res.numOfCartItems===0){   
+          this.NoCard=false;
+          return 
+        }
         this.productList=res
         this.NoCard=true
         this.isRespode=false
