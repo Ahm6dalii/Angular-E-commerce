@@ -14,6 +14,8 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { UserDataComponent } from './components/user-data/user-data.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 export const routes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home' ,component: HomeComponent },
@@ -21,6 +23,8 @@ export const routes: Routes = [{ path: '', redirectTo: 'home', pathMatch: 'full'
     { path: 'about', component:AboutComponent },
     { path: 'contact', component:ContactUsComponent }, 
     { path: 'product/:id',canActivate:[authGuard], component: ProductDetailsComponent },
+    { path: 'checkout/:id',canActivate:[authGuard], component: CheckoutComponent },
+    { path: 'allorders',canActivate:[authGuard], component: OrdersComponent },
     {path: 'setting',canActivate:[authGuard] ,component: SettingComponent, children:[
         { path: '', redirectTo: 'user-info', pathMatch: 'full' },
         {path: 'user-info', component:UserInfoComponent},

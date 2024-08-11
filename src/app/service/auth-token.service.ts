@@ -11,7 +11,7 @@ export class AuthTokenService {
   // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YjNjOTRlZWQwZGMwMDE2YzEwZjBjZiIsIm5hbWUiOiJBaG1lZCBBYmQgQWwtTXV0aSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzIzMDk5OTE0LCJleHAiOjE3MzA4NzU5MTR9.7MeEsxNXseN0OYYnwwmA3-bLy9UYl4M2fP8sS6bGLbY";
   token: any = '';
   myToken: BehaviorSubject<string|null> = new BehaviorSubject('');
-  decode: BehaviorSubject<object> = new BehaviorSubject({});
+  decode: BehaviorSubject<any> = new BehaviorSubject({});
   myToken$ = this.myToken.asObservable();
   decode$ = this.decode.asObservable();
   isBrowser: boolean = false;

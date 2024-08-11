@@ -98,10 +98,12 @@
             <tfoot>
               <tr>
                 <td colspan="3" class="fs-3 ">Total Price </td>
-                <td colspan="3" class="text-center text-success fw-semibold">{{productList.data?.totalCartPrice}} EGP</td>
+                <td colspan="1" class="text-center text-success fw-semibold">{{productList.data?.totalCartPrice}} EGP</td>
+                <td colspan="1"  class="text-center text-success fw-semibold"><button  [routerLink]="['/checkout',productList.data._id]" class="btn btn-outline-success">checkout</button></td>
               </tr>
             </tfoot>
           </table>
+          
         </div>
     }
         

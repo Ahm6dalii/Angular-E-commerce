@@ -5,10 +5,11 @@ import { LoadingScreenComponent } from "../loading-screen/loading-screen.compone
 import { FormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-cards',
   standalone: true,
-  imports: [ ToastModule,CustomStringPipe, LoadingScreenComponent,FormsModule],
+  imports: [ ToastModule,CustomStringPipe, LoadingScreenComponent,FormsModule,RouterLink],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.css',
   providers: [MessageService]
@@ -21,7 +22,7 @@ export class CardsComponent implements OnInit {
   count:number=0
   productList:any=[]
   _cardWishService=inject(CardWishService);
-  constructor(private _cardWishServicet:CardWishService,private messageService:MessageService,){
+  constructor(private _cardWishServicet:CardWishService,private messageService:MessageService){
 
   }
   ngOnInit(): void {

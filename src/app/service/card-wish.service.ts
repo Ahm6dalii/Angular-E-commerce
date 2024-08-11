@@ -138,5 +138,37 @@ export class CardWishService {
     });
   return this._httpClient.delete<any>(`https://ecommerce.routemisr.com/api/v1/wishlist/${id}`,{headers})
   }
+  checkOut(id:any,data:any):Observable<any>{ 
+    console.log(data,id);
+      const body={
+        "shippingAddress":data
+      }
+    const headers = new HttpHeaders({
+      'token':`${this.token}`,
+      'Content-Type': 'application/json'
+    });
+  return this._httpClient.post<any>(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://localhost:4200`,body,{headers})
+  }
 
+  checkOutCash(id:any,data:any):Observable<any>{ 
+    console.log(data,id);
+      const body={
+        "shippingAddress":data
+      }
+    const headers = new HttpHeaders({
+      'token': `${this.token}`,
+      'Content-Type': 'application/json'
+    });
+  return this._httpClient.post<any>(`https://ecommerce.routemisr.com/api/v1/orders/${id}`,body,{headers})
+  }
+
+
+  gitAllOrder(id:any):Observable<any>{ 
+    const headers = new HttpHeaders({
+      'token': `${this.token}`,
+      'Content-Type': 'application/json'
+    });
+  
+    return this._httpClient.get<any>(`https://ecommerce.routemisr.com/api/v1/orders/user/${id}`,{headers})
+  }
 }

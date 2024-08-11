@@ -36,8 +36,6 @@ export class ProductCardComponent implements OnInit{
 constructor(private messageService:MessageService,private _cardWishServicet:CardWishService ,private _productsService:ProductsService ,private _authTokenService:AuthTokenService){
 }
 ngOnInit(): void {
-// this.getCardProduct()
-
 
 this.haveSignIN()
 console.log(this.isLogedIn,'this.isLogedIn');
@@ -55,14 +53,7 @@ haveSignIN(){
     }
   })
 }
-// getCardProduct(){
-//   this._cardWishServicet.gitCard().subscribe({
-//     next:(res)=>{
-//       console.log(res);
-//       this.card=res;
-//     }
-//   })
-// }
+
 addProdctToCard(id:any){
   this._cardWishServicet.addToCard(id).subscribe({
     next:(res)=>{
