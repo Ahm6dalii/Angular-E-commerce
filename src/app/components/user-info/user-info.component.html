@@ -101,30 +101,33 @@
   </div>
 
   <div class="container mt-5">
-    <table class="table table-bordered">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Details</th>
-                <th scope="col">Phone</th>
-                <th scope="col">City</th>
-                <th scope="col">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if(userAddress){
-                @for (item of userAddress; track $index) {
-                    <tr>
-                        <td>{{item.name}}</td>
-                        <td>{{item.details}}</td>
-                        <td>{{item.phone}}</td>
-                        <td>{{item.city}}</td>
-                        <td class="text-center"><i class="fa-solid fa-trash text-danger" (click)="removeUserAddress(item._id)"></i></td>
-                    </tr>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Details</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if(userAddress){
+                    @for (item of userAddress; track $index) {
+                        <tr>
+                            <td>{{item.name}}</td>
+                            <td>{{item.details}}</td>
+                            <td>{{item.phone}}</td>
+                            <td>{{item.city}}</td>
+                            <td class="text-center">
+                                <i class="fa-solid fa-trash text-danger" (click)="removeUserAddress(item._id)"></i>
+                            </td>
+                        </tr>
+                    }
                 }
-                
-            }
-           
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
+git 
