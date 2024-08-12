@@ -1,0 +1,17 @@
+{
+  "routes": [
+    "/about",
+    "/allorders",
+    "/card-list",
+    "/contact",
+    "/home",
+    "/login",
+    "/product",
+    "/register",
+    "/setting",
+    "/setting/password",
+    "/setting/user-data",
+    "/setting/user-info",
+    "/wish-list"
+  ]
+}
