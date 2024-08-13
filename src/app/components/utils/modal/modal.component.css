@@ -12,3 +12,12 @@
 .text-h:hover{
     color: #444343;
 }
+
+@media(max-width:600){
+    .modal-dialog {
+        max-width: 10%!important;
+    }
+    /* .modal[_ngcontent-ng-c3857470196] {
+        --bs-modal-margin:10% !important;
+    } */
+}

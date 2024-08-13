@@ -3,11 +3,11 @@
     [showTransitionOptions]="'100ms'" 
     [hideTransitionOptions]="'100ms'" 
     [showTransformOptions]="'translateX(100%)'" />
-<div class="container my-5 w-75  border bg-body-secondary  rounded-1">
+<div class="container my-5  border bg-body-secondary  rounded-1">
     <form [formGroup]="updateForm" (ngSubmit)="updateUserInformation($event)">
-      <div class="row jumbotron box8 p-5">
+      <div class="row jumbotron box8 p-2">
         <div class="col-sm-12 mx-t3 mb-4">
-          <h2 class="text-center text-info">Edit Profile</h2>
+          <h2 class="text-center text-info">My Info</h2>
           @if(errorMessage){
           <div class="bg-danger w-50 rounded-5 mx-auto p-3">
             {{errorMessage}}
@@ -89,7 +89,7 @@
   
   
         <div class="col-sm-12 form-group mt-4">
-          <button class="btn  btn-outline-primary float-right d-block mx-auto mb-5 w-25" [disabled]="isLoading">
+          <button class="btn  btn-outline-primary float-right d-block mx-auto mb-5 w-50" [disabled]="isLoading">
             @if(isLoading){
             <i class="fa-solid fa-spinner fa-spin-pulse"></i>
             }
@@ -101,7 +101,7 @@
   </div>
 <h2 class="text-center my-1">My Address</h2>
   <div class="container mt-5">
-    <div class="table-responsive">
+    <div class="table-responsive overflow-x-auto">
         <table class="table table-bordered">
             <thead class="thead-light">
                 <tr>

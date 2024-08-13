@@ -9,7 +9,7 @@
 <app-loading-screen></app-loading-screen> 
    }@else{
     <h2 class="text-center text-danger">{{errorMessege}} </h2>
-    <form class="row my-3 w-75 m-auto" (ngSubmit)="register()" [formGroup]="registerForm">
+    <form class="row my-3 m-auto" (ngSubmit)="register()" [formGroup]="registerForm">
       <div class="mb-3 col-lg-6 col-md-12">
         <label for="userName" class="form-label">User Name</label>
         <input
@@ -127,7 +127,7 @@
       <button
         [disabled]="islodaing"
         type="submit"
-        class="btn btn-outline-primary d-block mx-auto mt-3"
+        class="btn btn-outline-primary  w-50 mx-auto mt-3"
       >
         Sign up
       </button>
