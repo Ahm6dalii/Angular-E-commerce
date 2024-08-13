@@ -1,20 +1,15 @@
 .regestrationPage {
   background-color: #ffffff !important ;
-  /* height: 50vh !important; */
 }
 input {
   background-color: #eeeeee !important;
-  width: 336px !important;
-  height: 40px !important;
+ 
 }
 button[type="submit"] {
-  width: 214px !important;
-  height: 51px !important;
-  /* background-color: #1e2772; */
+
 }
 .alert {
-  width: 336px !important;
-  height: 40px !important;
+
 }
 
 .spinner {
