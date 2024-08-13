@@ -15,7 +15,8 @@ templateUrl: './product-details.component.html',
   providers: [MessageService]
 })
 export class ProductDetailsComponent {
-  product!:Product
+  product!:Product;
+  imgSrc:string=""
   constructor(private messageService:MessageService, private route:ActivatedRoute,private _ProductService:ProductsService
     ,private router:Router,private _cardWishServicet:CardWishService
   ){
@@ -63,5 +64,13 @@ export class ProductDetailsComponent {
           
         }
       })
+    }
+
+
+    show(e){
+      console.log(e.target.src);
+      this.imgSrc=e.target.src
+      // document.getElementById('mainPic').src<HTMLElement>=e.target.src
+      
     }
 }
